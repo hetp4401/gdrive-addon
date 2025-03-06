@@ -7,10 +7,9 @@ const router = express.Router();
 
 app.use(cors());
 
-// const RD_TOKEN = "7MFID4YCEVKRZT67NPRFPJPWI56SY2UY7Y2BIACLQJVZ72Q5QUNA";
 const ENTRY_DOMAIN = process.env.ENTRY_DOMAIN;
 const RD_TOKEN = process.env.RD_TOKEN;
-// const ENTRY_DOMAIN =  `localhost` : `billybishop4-workers.xyz`;
+
 var ALLOW_MANIFEST = false;
 const MANIFEST = {
   catalogs: [],
