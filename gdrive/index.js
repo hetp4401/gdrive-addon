@@ -48,7 +48,7 @@ router.get("/stream/:type/:tt.json", async (req, res) => {
 
 router.get("/unrestrict/:b64url", async (req, res) => {
   res.redirect(302, await unrestrictTorrentio(req.params.b64url));
-  saveActivity(req.params.b64url, req.ip);
+  saveActivity(req.params.b64url, req.headers["cf-connecting-ip"] || req.ip);
 });
 
 router.get("/activity", async (req, res) => {
