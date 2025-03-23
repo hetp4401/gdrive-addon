@@ -121,3 +121,43 @@ async function saveActivity(b64url, ip) {
     ACTIVITY.shift();
   }
 }
+
+/*
+
+docker run
+----------
+docker build -t gdrive .
+docker stop gdrive
+docker rm gdrive
+docker run -d --name gdrive --restart always -p 3000:3000 -e RD_TOKEN=_ -e ENTRY_DOMAIN=_ gdrive
+# docker build -t gdrive .;docker stop gdrive; docker rm gdrive; docker run -d --name gdrive --restart always -p 3000:3000 -e RD_TOKEN=7MFID4YCEVKRZT67NPRFPJPWI56SY2UY7Y2BIACLQJVZ72Q5QUNA -e ENTRY_DOMAIN=billybishop4-workers.xyz gdrive
+
+nginx conf
+----------
+apt update
+apt install nginx
+
+server {
+    server_name _;
+
+    location /gdrive {
+	      proxy_pass http://localhost:3000;
+    }
+    
+    location /d/ {
+        resolver 1.1.1.1;
+        set $domain $arg_domain;
+        proxy_set_header Host $domain;
+        proxy_set_header Cdn-Loop "";
+        proxy_set_header Cf-Connecting-Ip "";
+        proxy_set_header Cf-Ray "";
+        proxy_set_header Cf-Visitor "";
+        proxy_pass https://$domain;
+	      proxy_ssl_server_name on;
+    }
+}
+
+add cert bot
+------------
+
+*/
