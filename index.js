@@ -126,6 +126,8 @@ async function saveActivity(b64url, ip) {
 
 docker run
 ----------
+curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
+
 docker build -t gdrive .
 docker stop gdrive
 docker rm gdrive
@@ -138,7 +140,7 @@ apt update
 apt install nginx
 
 server {
-    server_name _;
+    server_name billybishop4-workers.xyz;
 
     location /gdrive {
 	      proxy_pass http://localhost:3000;
@@ -159,5 +161,8 @@ server {
 
 add cert bot
 ------------
+apt update
+apt install certbot python3-certbot-nginx -y
+sudo certbot --nginx -d billybishop4-workers.xyz
 
 */
